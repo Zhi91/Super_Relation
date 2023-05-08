@@ -23,9 +23,9 @@ pred_folder = r'./pred'
 parser = argparse.ArgumentParser(description =
                     'Implement of SVM and DSSM for Super Relation Extraction')
 
-parser.add_argument('--data', type=str, default=r'./Data/data02.tsv',
+parser.add_argument('--data', type=str, default=r'./Data/data.tsv',
                     help='location of the labeled data')
-parser.add_argument('--division', type=str, default=r'./Data/index5.tsv',
+parser.add_argument('--division', type=str, default=r'./Data/index.tsv',
                     help='division of trainset testtset validset')
 parser.add_argument('--epoch', type=int, default=1000,
                     help='number of the train epoch')
