@@ -56,6 +56,7 @@ if __name__ == '__main__':
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     torch.cuda.empty_cache()
     LM = WordEmbedding(args.encoder,device)
+    LM.encoder.eval()
 
     '''word embedding'''
     seq_len,input_ids, word_span,attention_mask = LM.Tokenize(TrainSet.Sentence_List)
@@ -98,6 +99,7 @@ if __name__ == '__main__':
             sys.exit()            
 
     '''super reltaion extractation, training'''
+    torch.cuda.manual_seed(seed)
     if  args.dist != 'concat':
         model = Multi_Grain(args.model,args.gate,LM.dim,hidden_dim,args.dist,target_size).to(device)
     else:
