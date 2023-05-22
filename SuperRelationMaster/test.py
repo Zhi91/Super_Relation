@@ -17,6 +17,7 @@ device = torch.device('cuda' if  torch.cuda.is_available() else 'cpu')
 if __name__ == '__main__':
     data = DataCenter(document_file)
     LM = WordEmbedding('scibert',device)
+    LM.encoder.eval()
     seq_len,input_ids,word_span,attention_mask = LM.Tokenize(data.Sentence_List)
     embedding = LM.Embedding(input_ids,attention_mask)
     print(embedding.size())
